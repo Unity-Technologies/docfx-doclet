@@ -342,9 +342,9 @@ public class YmlFilesBuilder {
             LookupContext lookupContext = lookup.buildContext(classMetadataFile);
 
             for (MetadataFileItem item : classMetadataFile.getItems()) {
-                item.setSummary(YamlUtil.convertHtmlToMarkdown(
+                item.setSummary(
                         populateUidValues(item.getSummary(), lookupContext)
-                ));
+                );
 
                 Optional.ofNullable(item.getSyntax()).ifPresent(syntax -> {
                             Optional.ofNullable(syntax.getParameters()).ifPresent(

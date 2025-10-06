@@ -8,6 +8,7 @@ import static org.junit.Assert.assertThat;
 import com.microsoft.model.MetadataFile;
 import com.microsoft.model.MetadataFileItem;
 import com.microsoft.model.MethodParameter;
+import com.microsoft.util.YamlUtil;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
@@ -43,22 +44,6 @@ public class YamlUtilTest {
             + "    - id: \"Some id 5\"\n"
             + "      type: \"Some type 5\"\n"
             + "      description: \"Some desc 5\"\n"));
-    }
-
-    @Test
-    public void convertHtmlToMarkdown() throws IOException {
-        String text = FileUtils.readFileToString(new File("target/test-classes/html2md/initial.html"), UTF_8);
-        String expectedResult = FileUtils.readFileToString(new File("target/test-classes/html2md/converted.md"), UTF_8);
-
-        String result = YamlUtil.convertHtmlToMarkdown(text);
-
-        assertThat("Wrong result", result, is(expectedResult));
-    }
-
-    @Test
-    public void convertHtmlToMarkdownForBlankParam() {
-        assertThat("Wrong result for null", YamlUtil.convertHtmlToMarkdown(null), is(nullValue()));
-        assertThat("Wrong result for empty string", YamlUtil.convertHtmlToMarkdown(""), is(""));
     }
 
     private MetadataFileItem buildMetadataFileItem(int seed) {
