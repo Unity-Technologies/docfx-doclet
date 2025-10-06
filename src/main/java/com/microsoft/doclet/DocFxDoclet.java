@@ -73,7 +73,8 @@ public class DocFxDoclet implements Doclet {
             // 'doclet' parameter not populated. But Gradle javadoc not align with this rule and
             // passes them in spite of 'doclet' parameter existence
             new FakeOptionForCompatibilityWithStandardDoclet("Fake support of doctitle property", "-doctitle"),
-            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of windowtitle property", "-windowtitle")
+            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of windowtitle property", "-windowtitle"),
+            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of notimestamp property", "-notimestamp")
         };
         return new HashSet<>(Arrays.asList(options));
     }
