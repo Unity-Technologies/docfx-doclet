@@ -254,7 +254,7 @@ items:
   overload: "com.microsoft.samples.SuperHero.successfullyAttacked*"
   type: "Method"
   package: "com.microsoft.samples"
-  summary: "This is a simple description of the method. . . [Superman!][Superman]\n\n\n[Superman]: http://www.supermanisthegreatest.com"
+  summary: "<p>This is a simple description of the method. . .\n <a href=\"http://www.supermanisthegreatest.com\">Superman!</a>\n </p>"
   syntax:
     content: "public int successfullyAttacked(int incomingDamage, String damageType)"
     parameters:
