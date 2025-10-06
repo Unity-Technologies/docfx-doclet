@@ -62,7 +62,7 @@ public class DocletRunnerTest {
 
         List<Path> expectedFilePaths = Files.list(Path.of(EXPECTED_GENERATED_FILES_DIR)).collect(Collectors.toList());
         List<Path> generatedFilePaths = Files.list(Path.of(OUTPUT_DIR)).collect(Collectors.toList());
-        assertThat("Wrong files count", generatedFilePaths.size(), is(expectedFilePaths.size()));
+        assertThat("Wrong files count", expectedFilePaths.size(), is(generatedFilePaths.size()));
 
         for (Path expectedFilePath : expectedFilePaths) {
             Path generatedFilePath = Path.of(OUTPUT_DIR, expectedFilePath.getFileName().toString());
@@ -73,12 +73,12 @@ public class DocletRunnerTest {
             String[] generatedFileLines = generatedFileContent.split("\n");
             String[] expectedFileLines = expectedFileContent.split("\n");
 
-            assertThat("Unexpected amount of lines in file " + generatedFilePath, generatedFileLines.length,
-                is(expectedFileLines.length));
+            assertThat("Unexpected amount of lines in file " + generatedFilePath, expectedFileLines.length,
+                is(generatedFileLines.length));
 
             for (int i = 0; i < generatedFileLines.length; i++) {
                 assertThat("Wrong file content for file " + generatedFilePath,
-                    generatedFileLines[i], is(expectedFileLines[i]));
+                    expectedFileLines[i], is(generatedFileLines[i]));
             }
         }
     }
