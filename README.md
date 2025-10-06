@@ -14,7 +14,7 @@ If you are using [DocFX V3](https://github.com/dotnet/docfx/tree/v3), please che
 The easiest way is to just get the JAR files directly from our [Release for June, 2020. Supports DocFX V2
 ](https://github.com/docascode/docfx-doclet/releases/tag/143274).
 
-Alternatively, you can clone the repository and build it with the help of Maven. You can do so by calling: 
+Alternatively, you can clone the repository and build it with the help of Maven. You can do so by calling:
 
 ```bash
 mvn compile
@@ -29,7 +29,7 @@ mvn package
 This will produce two JAR files that you can use - one with dependencies, and another one without.
 
 
-## Usage 
+## Usage
 
 ### With `maven-javadoc-plugin`
 
@@ -54,13 +54,13 @@ When there is an existing java project where Maven is used as a build tool, one 
 </plugin>
 ```
 
-The doclet can then be ran with the following command: 
+The doclet can then be ran with the following command:
 
 ```bash
 mvn javadoc:javadoc
 ```
 
-The generated files will be placed in the `./target/site/apidocs/generated-files` folder  
+The generated files will be placed in the `./target/site/apidocs/generated-files` folder
 
 ### Usage of doclet with Gradle javadoc task
 
@@ -76,8 +76,8 @@ For Gradle project put jar with doclet to `libs` folder and add next task to `bu
       dependsOn build
     }
 
-And run doclet using next command: `gradle generateApiDocs`  
-In result generated files will be placed into `./build/generated-files` folder  
+And run doclet using next command: `gradle generateApiDocs`
+In result generated files will be placed into `./build/generated-files` folder
 
 ### Standalone
 
@@ -117,7 +117,7 @@ javadoc \
 -docletpath ./docfx-doclet-1.0-SNAPSHOT-jar-with-dependencies.jar \     # Set path to jar with doclet
 -doclet com.microsoft.doclet.DocFxDoclet \            # Set name of doclet class
 -cp ./hamcrest-core-1.3.jar \                         # Put dependencies into classpath
--sourcepath ./junit-4.12-sources \                    # Set localtion of jar with sources 
+-sourcepath ./junit-4.12-sources \                    # Set localtion of jar with sources
 -outputpath ./test-out \                              # Set location of output files
 -subpackages org:junit                                # Subpackages to recursively load separated by ':'
 ```
@@ -129,7 +129,7 @@ You can take a look at an [example documentation generation script](https://gith
 
 When making changes, it is important to ensure that you are using `DocletRunner` class - it is responsible for makeing the `javadoc` call and takes params from an external configuration file.
 
-To use it:  
+To use it:
 
 - Create Run/Debug IDE configuration with the main class set as `com.microsoft.doclet.DocletRunner`
 - Add `src\test\resources\test-doclet-params.txt` as program arguments of configuration
