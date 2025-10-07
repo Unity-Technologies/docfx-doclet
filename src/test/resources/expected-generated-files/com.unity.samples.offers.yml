@@ -1,0 +1,19 @@
+### YamlMime:ManagedReference
+items:
+- uid: "com.unity.samples.offers"
+  id: "offers"
+  children:
+  - "com.unity.samples.offers.Offer"
+  langs:
+  - "java"
+  name: "com.unity.samples.offers"
+  nameWithType: "com.unity.samples.offers"
+  fullName: "com.unity.samples.offers"
+  type: "Namespace"
+  syntax:
+    content: "package com.unity.samples.offers"
+references:
+- uid: "com.unity.samples.offers.Offer"
+  name: "Offer"
+  nameWithType: "Offer"
+  fullName: "com.unity.samples.offers.Offer"

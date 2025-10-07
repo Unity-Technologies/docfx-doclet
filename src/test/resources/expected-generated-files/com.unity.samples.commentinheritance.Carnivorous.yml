@@ -1,0 +1,72 @@
+### YamlMime:ManagedReference
+items:
+- uid: "com.unity.samples.commentinheritance.Carnivorous"
+  id: "Carnivorous"
+  parent: "com.unity.samples.commentinheritance"
+  children:
+  - "com.unity.samples.commentinheritance.Carnivorous.eat(com.unity.samples.commentinheritance.Animal)"
+  - "com.unity.samples.commentinheritance.Carnivorous.getKind()"
+  langs:
+  - "java"
+  name: "Carnivorous"
+  nameWithType: "Carnivorous"
+  fullName: "com.unity.samples.commentinheritance.Carnivorous"
+  type: "Interface"
+  package: "com.unity.samples.commentinheritance"
+  summary: "Marks an Animal that eats other animals."
+  syntax:
+    content: "public interface Carnivorous"
+- uid: "com.unity.samples.commentinheritance.Carnivorous.eat(com.unity.samples.commentinheritance.Animal)"
+  id: "eat(com.unity.samples.commentinheritance.Animal)"
+  parent: "com.unity.samples.commentinheritance.Carnivorous"
+  langs:
+  - "java"
+  name: "eat(Animal animalBeingEaten)"
+  nameWithType: "Carnivorous.eat(Animal animalBeingEaten)"
+  fullName: "com.unity.samples.commentinheritance.Carnivorous.eat(Animal animalBeingEaten)"
+  overload: "com.unity.samples.commentinheritance.Carnivorous.eat*"
+  type: "Method"
+  package: "com.unity.samples.commentinheritance"
+  summary: "Eat the provided animal."
+  syntax:
+    content: "public abstract void eat(Animal animalBeingEaten)"
+    parameters:
+    - id: "animalBeingEaten"
+      type: "com.unity.samples.commentinheritance.Animal"
+      description: "Animal that will be eaten."
+- uid: "com.unity.samples.commentinheritance.Carnivorous.getKind()"
+  id: "getKind()"
+  parent: "com.unity.samples.commentinheritance.Carnivorous"
+  langs:
+  - "java"
+  name: "getKind()"
+  nameWithType: "Carnivorous.getKind()"
+  fullName: "com.unity.samples.commentinheritance.Carnivorous.getKind()"
+  overload: "com.unity.samples.commentinheritance.Carnivorous.getKind*"
+  type: "Method"
+  package: "com.unity.samples.commentinheritance"
+  summary: "Get kind from Carnivorous."
+  syntax:
+    content: "public abstract String getKind()"
+    return:
+      type: "java.lang.String"
+references:
+- uid: "com.unity.samples.commentinheritance.Animal"
+  name: "Animal"
+  nameWithType: "Animal"
+  fullName: "com.unity.samples.commentinheritance.Animal"
+- uid: "com.unity.samples.commentinheritance.Carnivorous.eat*"
+  name: "eat"
+  nameWithType: "Carnivorous.eat"
+  fullName: "com.unity.samples.commentinheritance.Carnivorous.eat"
+  package: "com.unity.samples.commentinheritance"
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"
+- uid: "com.unity.samples.commentinheritance.Carnivorous.getKind*"
+  name: "getKind"
+  nameWithType: "Carnivorous.getKind"
+  fullName: "com.unity.samples.commentinheritance.Carnivorous.getKind"
+  package: "com.unity.samples.commentinheritance"

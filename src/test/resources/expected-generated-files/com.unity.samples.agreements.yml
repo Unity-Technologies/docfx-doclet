@@ -1,0 +1,34 @@
+### YamlMime:ManagedReference
+items:
+- uid: "com.unity.samples.agreements"
+  id: "agreements"
+  children:
+  - "com.unity.samples.agreements.AgreementDetailsCollectionOperations"
+  - "com.unity.samples.agreements.AgreementMetaData"
+  - "com.unity.samples.agreements.IAgreementDetailsCollection"
+  - "com.unity.samples.agreements.ResourceCollection"
+  langs:
+  - "java"
+  name: "com.unity.samples.agreements"
+  nameWithType: "com.unity.samples.agreements"
+  fullName: "com.unity.samples.agreements"
+  type: "Namespace"
+  syntax:
+    content: "package com.unity.samples.agreements"
+references:
+- uid: "com.unity.samples.agreements.AgreementDetailsCollectionOperations"
+  name: "AgreementDetailsCollectionOperations"
+  nameWithType: "AgreementDetailsCollectionOperations"
+  fullName: "com.unity.samples.agreements.AgreementDetailsCollectionOperations"
+- uid: "com.unity.samples.agreements.AgreementMetaData"
+  name: "AgreementMetaData"
+  nameWithType: "AgreementMetaData"
+  fullName: "com.unity.samples.agreements.AgreementMetaData"
+- uid: "com.unity.samples.agreements.IAgreementDetailsCollection"
+  name: "IAgreementDetailsCollection"
+  nameWithType: "IAgreementDetailsCollection"
+  fullName: "com.unity.samples.agreements.IAgreementDetailsCollection"
+- uid: "com.unity.samples.agreements.ResourceCollection"
+  name: "ResourceCollection<TResource>"
+  nameWithType: "ResourceCollection<TResource>"
+  fullName: "com.unity.samples.agreements.ResourceCollection<TResource>"

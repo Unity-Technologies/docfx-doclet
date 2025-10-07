@@ -6,7 +6,7 @@ plugins {
     id("com.github.jk1.dependency-license-report") version "2.9"
 }
 
-group = "com.microsoft"
+group = "com.unity"
 version = "1.1"
 
 java {
