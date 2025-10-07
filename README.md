@@ -1,35 +1,58 @@
 
 ## JavaDoc Doclet for DocFX
 
-[![Build status](https://apidrop.visualstudio.com/Toolshed/_apis/build/status/Toolshed-Maven-CI)](https://apidrop.visualstudio.com/Toolshed/_build/latest?definitionId=1633)
-
 This doclet is designed to produce a YAML representation of the Javadoc-generated documentation, that can be integrated into [DocFX](https://dotnet.github.io/docfx/).
 
 `Please Notice:` This default branch supports **DocFX V2** only.
 
-If you are using [DocFX V3](https://github.com/dotnet/docfx/tree/v3), please check further in [main](https://github.com/docascode/docfx-doclet/tree/main) branch.
+If you are using [DocFX V3](https://github.com/dotnet/docfx/tree/v3), please check further in [main](https://github.com/unity/docfx-doclet/tree/main) branch.
 
 ## Getting started
 
-The easiest way is to just get the JAR files directly from our [Release for June, 2020. Supports DocFX V2
-](https://github.com/docascode/docfx-doclet/releases/tag/143274).
-
-Alternatively, you can clone the repository and build it with the help of Maven. You can do so by calling:
+You can clone the repository and build it with the help of Gradle. You can do so by calling:
 
 ```bash
-mvn compile
+./gradlew build
 ```
 
 Once the compilation is complete, you will need to generate a JAR file, that can be used alongside `javadoc`. You can do so by calling:
 
 ```bash
-mvn package
+./gradlew jar uberJar
 ```
 
 This will produce two JAR files that you can use - one with dependencies, and another one without.
 
 
 ## Usage
+
+### With Gradle's javadoc task
+
+Add the docfx-doclet to your `settings.gradle`:
+
+    sourceControl {
+      gitRepository(uri("https://github.com/Unity-Technologies/docfx-doclet.git")) {
+        producesModule("com.unity:docfx-doclet")
+      }
+    }
+
+Add `build.gradle`:
+
+    task generateApiDocs(type: Javadoc) {
+      source sourceSets.main.allJava
+      classpath = configurations.compile
+      options.encoding 'UTF-8'
+      destinationDir = file("build/generated-files")
+      options.addStringOption("doclet", "com.unity.doclet.DocFxDoclet")
+      options.docletpath = [file("libs/docfx-doclet-1.1.0-uber.jar")]
+      dependsOn build
+    }
+
+Run the doclet using the command:
+
+    ./gradlew generateApiDocs
+
+The generated DocFX YAML files can be found in the `./build/generated-files` directory.
 
 ### With `maven-javadoc-plugin`
 
@@ -41,7 +64,7 @@ When there is an existing java project where Maven is used as a build tool, one 
   <artifactId>maven-javadoc-plugin</artifactId>
   <version>3.0.1</version>
   <configuration>
-    <doclet>com.microsoft.doclet.DocFxDoclet</doclet>
+    <doclet>com.unity.doclet.DocFxDoclet</doclet>
     <docletArtifact>
       <groupId>${project.groupId}</groupId>
       <artifactId>${project.artifactId}</artifactId>
@@ -62,23 +85,6 @@ mvn javadoc:javadoc
 
 The generated files will be placed in the `./target/site/apidocs/generated-files` folder
 
-### Usage of doclet with Gradle javadoc task
-
-For Gradle project put jar with doclet to `libs` folder and add next task to `build.gradle`:
-
-    task generateApiDocs(type: Javadoc) {
-      source sourceSets.main.allJava
-      classpath = configurations.compile
-      options.encoding 'UTF-8'
-      destinationDir = file("build/generated-files")
-      options.addStringOption("doclet", "com.microsoft.doclet.DocFxDoclet")
-      options.docletpath = [file("libs/docfx-doclet-1.0-SNAPSHOT-jar-with-dependencies.jar")]
-      dependsOn build
-    }
-
-And run doclet using next command: `gradle generateApiDocs`
-In result generated files will be placed into `./build/generated-files` folder
-
 ### Standalone
 
 One can execute the `javadoc` command with the command line parameters:
@@ -87,13 +93,13 @@ One can execute the `javadoc` command with the command line parameters:
 javadoc \
 -encoding UTF-8 \
 -docletpath ./target/docfx-doclet-1.0-SNAPSHOT-jar-with-dependencies.jar \
--doclet com.microsoft.doclet.DocFxDoclet \
+-doclet com.unity.doclet.DocFxDoclet \
 -classpath <list of jar with dependencies> \
 -sourcepath ./src/test/java \
 -outputpath ./target/test-out \
 -excludepackages com\.msdn\..*:com\.ms\.news\..*  \
 -excludeclasses .*SomeClass:com\.ms\..*AnyClass \
--subpackages com.microsoft.samples
+-subpackages com.unity.samples
 ```
 
 | Parameter | Description |
@@ -115,7 +121,7 @@ For example, if we would want to generate documentation for [JUnit-4.12 source c
 javadoc \
 -encoding UTF-8 \                                     # Source files encoding
 -docletpath ./docfx-doclet-1.0-SNAPSHOT-jar-with-dependencies.jar \     # Set path to jar with doclet
--doclet com.microsoft.doclet.DocFxDoclet \            # Set name of doclet class
+-doclet com.unity.doclet.DocFxDoclet \            # Set name of doclet class
 -cp ./hamcrest-core-1.3.jar \                         # Put dependencies into classpath
 -sourcepath ./junit-4.12-sources \                    # Set localtion of jar with sources
 -outputpath ./test-out \                              # Set location of output files
@@ -131,10 +137,10 @@ When making changes, it is important to ensure that you are using `DocletRunner`
 
 To use it:
 
-- Create Run/Debug IDE configuration with the main class set as `com.microsoft.doclet.DocletRunner`
+- Create Run/Debug IDE configuration with the main class set as `com.unity.doclet.DocletRunner`
 - Add `src\test\resources\test-doclet-params.txt` as program arguments of configuration
 
-Now we could run/debug doclet against source code classes located in the `com.microsoft.samples` package, as specified in the `test-doclet-params.txt` config file.
+Now we could run/debug doclet against source code classes located in the `com.unity.samples` package, as specified in the `test-doclet-params.txt` config file.
 
 
 ### Serving DocFx documentation
