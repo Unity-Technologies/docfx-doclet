@@ -18,8 +18,7 @@ public class YamlUtil {
         .disable(Feature.WRITE_DOC_START_MARKER)
         .disable(Feature.SPLIT_LINES)
     )
-        .setSerializationInclusion(Include.NON_NULL)
-        .setSerializationInclusion(Include.NON_EMPTY);
+        .setDefaultPropertyInclusion(Include.NON_EMPTY);
 
     public static String objectToYamlString(Object object) {
         try {

@@ -3,7 +3,7 @@ package com.unity.util;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.unity.model.MetadataFile;
 import com.unity.model.MetadataFileItem;

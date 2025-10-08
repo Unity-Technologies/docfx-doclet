@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.google.testing.compile.CompilationRule;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UtilsTest {

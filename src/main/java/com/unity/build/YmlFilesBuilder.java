@@ -380,7 +380,7 @@ public class YmlFilesBuilder {
             String linkContent = linkContentMatcher.group();
             String uid = resolveUidFromLinkContent(linkContent, lookupContext);
             String updatedLink = linkContentMatcher.replaceAll(uid);
-            text = StringUtils.replace(text, link, updatedLink);
+            text = text.replace(link, updatedLink);
         }
         return text;
     }

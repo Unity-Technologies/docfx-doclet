@@ -1,7 +1,7 @@
 package com.unity.lookup;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.google.testing.compile.CompilationRule;
 import javax.lang.model.element.PackageElement;

@@ -22,7 +22,7 @@ public class OptionsFileUtil {
     }
 
     private static String readOptionsFromFile(String filename) {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {

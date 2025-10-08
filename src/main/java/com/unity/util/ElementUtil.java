@@ -1,7 +1,5 @@
 package com.unity.util;
 
-import org.apache.commons.lang3.StringUtils;
-
 import javax.lang.model.element.Element;
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
@@ -33,7 +31,7 @@ public class ElementUtil {
             .filter(o -> !Utils.isPrivateOrPackagePrivate(o))
             .filter(o -> !matchAnyPattern(excludeClasses, String.valueOf(o.getQualifiedName())))
             .sorted((o1, o2) ->
-                StringUtils.compare(String.valueOf(o1.getSimpleName()), String.valueOf(o2.getSimpleName()))
+                String.valueOf(o1.getSimpleName()).compareTo(String.valueOf(o2.getSimpleName()))
             ).collect(Collectors.toList());
     }
 
@@ -41,7 +39,7 @@ public class ElementUtil {
         return ElementFilter.packagesIn(elements).stream()
             .filter(o -> !matchAnyPattern(excludePackages, String.valueOf(o)))
             .sorted((o1, o2) ->
-                StringUtils.compare(String.valueOf(o1.getSimpleName()), String.valueOf(o2.getSimpleName()))
+                String.valueOf(o1.getSimpleName()).compareTo(String.valueOf(o2.getSimpleName()))
             ).collect(Collectors.toList());
     }
 

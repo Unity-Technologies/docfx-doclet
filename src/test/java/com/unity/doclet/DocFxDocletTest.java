@@ -1,7 +1,7 @@
 package com.unity.doclet;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.unity.doclet.DocFxDoclet.CustomOption;
 import com.unity.doclet.DocFxDoclet.FakeOptionForCompatibilityWithStandardDoclet;
