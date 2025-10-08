@@ -58,6 +58,7 @@ public class Person<T> {
     /**
      * We need to have this method that takes parameter and return types declared in the current class
      */
+    @SuppressWarnings("rawtypes")
     public static Person buildPerson(Person seed) {
         return seed;
     }

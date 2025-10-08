@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  * @author Captain America
  */
+@SuppressWarnings("rawtypes")
 public class SuperHero extends Person implements Serializable, Cloneable {
 
     /**
@@ -100,6 +101,7 @@ public class SuperHero extends Person implements Serializable, Cloneable {
         this.defense = defense;
     }
 
+    @SuppressWarnings("unused")
     private void setHobby(String hobby) {
         this.hobby = hobby;
     }

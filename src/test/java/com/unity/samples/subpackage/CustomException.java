@@ -15,6 +15,7 @@ public class CustomException extends Exception {
         throw new CustomException("It happened!");
     }
 
+    @SuppressWarnings("unused")
     private class PrivateException {
         private String message;
     }

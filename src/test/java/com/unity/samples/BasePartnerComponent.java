@@ -33,10 +33,8 @@ public abstract class BasePartnerComponent<TContext>
     /**
      * Gets a reference to the partner operations instance that generated this component.
      */
+    @SuppressWarnings("unused")
     private IPartner partner;
-
-
-   
 
     private void setPartner( IPartner value )
     {
@@ -46,6 +44,7 @@ public abstract class BasePartnerComponent<TContext>
     /**
      * Gets the component context object.
      */
+    @SuppressWarnings("unused")
     private TContext context;
 
  
