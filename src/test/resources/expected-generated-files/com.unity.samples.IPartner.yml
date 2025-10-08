@@ -33,13 +33,13 @@ items:
       type: "java.lang.String"
       description: "The partner credentials."
 references:
-- uid: "java.lang.String"
-  spec.java:
-  - uid: "java.lang.String"
-    name: "String"
-    fullName: "java.lang.String"
 - uid: "com.unity.samples.IPartner.getCredentials*"
   name: "getCredentials"
   nameWithType: "IPartner.getCredentials"
   fullName: "com.unity.samples.IPartner.getCredentials"
   package: "com.unity.samples"
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"

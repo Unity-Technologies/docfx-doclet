@@ -61,13 +61,13 @@ references:
   nameWithType: "Herbivorous.eat"
   fullName: "com.unity.samples.commentinheritance.Herbivorous.eat"
   package: "com.unity.samples.commentinheritance"
-- uid: "java.lang.String"
-  spec.java:
-  - uid: "java.lang.String"
-    name: "String"
-    fullName: "java.lang.String"
 - uid: "com.unity.samples.commentinheritance.Herbivorous.getKind*"
   name: "getKind"
   nameWithType: "Herbivorous.getKind"
   fullName: "com.unity.samples.commentinheritance.Herbivorous.getKind"
   package: "com.unity.samples.commentinheritance"
+- uid: "java.lang.String"
+  spec.java:
+  - uid: "java.lang.String"
+    name: "String"
+    fullName: "java.lang.String"

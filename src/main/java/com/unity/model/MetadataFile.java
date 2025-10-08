@@ -32,6 +32,8 @@ public class MetadataFile implements YmlFile {
     public String getFileContent() {
         Set<MetadataFileItem> sortedSet = new TreeSet<>(this.items);
         this.items = sortedSet;
+        Set<MetadataFileItem> sortedReferences = new TreeSet<>(this.references);
+        this.references = sortedReferences;
         return METADATA_FILE_HEADER + YamlUtil.objectToYamlString(this);
     }
 

@@ -173,7 +173,7 @@ public class ClassLookup extends BaseLookup<TypeElement> {
     List<String> determineInheritedMembers(List<ExtendedMetadataFileItem> inheritedMethods) {
 
         if (inheritedMethods.size() > 0) {
-            HashMap<String, ExtendedMetadataFileItem> map = new HashMap<>();
+            LinkedHashMap<String, ExtendedMetadataFileItem> map = new LinkedHashMap<>();
             for (ExtendedMetadataFileItem item : inheritedMethods
             ) {
                 String key = item.getName();
