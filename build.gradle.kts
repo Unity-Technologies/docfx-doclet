@@ -31,14 +31,22 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest:2.2")
     testImplementation("org.mockito:mockito-core:5.20.0")
     testImplementation("com.google.testing.compile:compile-testing:0.23.0")
+
+    compileOnly("com.github.spotbugs:spotbugs-annotations:4.8.6")
 }
 
 layout.buildDirectory = file("output")
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
-    options.compilerArgs.add("-Xlint:unchecked")
-    options.compilerArgs.add("-Xlint:deprecation")
+    options.compilerArgs.addAll(listOf(
+        "-Xlint:unchecked",
+        "-Xlint:deprecation",
+        "-Xlint:rawtypes",
+        "-Xlint:cast",
+        "-Xlint:finally"
+    ))
+    options.isIncremental = true
 }
 
 tasks.javadoc {
@@ -55,12 +63,19 @@ licenseReport {
     renderers = arrayOf(TextReportRenderer())
 }
 
-tasks.register("printDependencies") {
-    doLast {
-        configurations.runtimeClasspath.get().forEach {
-            println(it.name)
-        }
-    }
+tasks.register<JavaExec>("runDocletOnSamples") {
+    group = "documentation"
+    description = "Run the doclet on the test sample classes"
+    dependsOn(tasks.classes)
+
+    classpath = configurations.runtimeClasspath.get() + files("${layout.buildDirectory.get()}/classes/java/main")
+    mainClass.set("jdk.javadoc.internal.tool.Main")
+    args(
+        "-doclet", "com.unity.doclet.DocFxDoclet",
+        "-sourcepath", "src/test/java",
+        "-subpackages", "com.unity.samples",
+        "-outputpath", "${layout.buildDirectory.get()}/doclet-output"
+    )
 }
 
 tasks.register<Jar>("uberJar") {
@@ -89,9 +104,14 @@ tasks.register<Jar>("uberJar") {
 
 tasks.test {
     finalizedBy(tasks.jacocoTestReport)
+
     testLogging {
-        events("passed", "skipped", "failed")
+        events("passed", "skipped", "failed", "started")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
         showStandardStreams = true
+        showCauses = true
+        showExceptions = true
+        showStackTraces = true
     }
 }
 
@@ -101,6 +121,18 @@ tasks.jacocoTestReport {
         xml.required.set(false)
         csv.required.set(false)
         html.outputLocation.set(layout.buildDirectory.dir("reports/coverage"))
+    }
+
+    finalizedBy("jacocoTestCoverageVerification")
+}
+
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = "0.80".toBigDecimal() // 80% line coverage
+            }
+        }
     }
 }
 
