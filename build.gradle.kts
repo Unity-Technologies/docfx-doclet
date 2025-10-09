@@ -3,11 +3,12 @@ import com.github.jk1.license.render.TextReportRenderer
 plugins {
     id("java")
     id("jacoco")
+    id("maven-publish")
     id("com.github.jk1.dependency-license-report") version "2.9"
 }
 
 group = "com.unity"
-version = "1.1.0"
+version = "1.1.1"
 
 java {
     withJavadocJar()
@@ -23,9 +24,8 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.19.0")
     implementation("org.apache.commons:commons-collections4:4.5.0")
     implementation("commons-io:commons-io:2.20.0")
-    implementation(enforcedPlatform("com.fasterxml.jackson:jackson-bom:2.20.0"))
-    implementation("com.fasterxml.jackson.core:jackson-databind")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.20.0")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.20.0")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.hamcrest:hamcrest:2.2")
@@ -131,6 +131,44 @@ tasks.jacocoTestCoverageVerification {
         rule {
             limit {
                 minimum = "0.80".toBigDecimal() // 80% line coverage
+            }
+        }
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.unity"
+            artifactId = "docfx-doclet"
+            version = "1.1.1"
+
+            from(components["java"])
+
+            pom {
+                name.set("DocFX Doclet")
+                description.set("JavaDoc Doclet for DocFX that transforms Java source code documentation into YAML files")
+                url.set("https://github.com/Unity-Technologies/docfx-doclet")
+
+                licenses {
+                    license {
+                        name.set("MIT")
+                        url.set("https://github.com/Unity-Technologies/docfx-doclet/blob/main/LICENSE")
+                    }
+                }
+
+                developers {
+                    developer {
+                        organization.set("Unity Technologies")
+                        organizationUrl.set("https://unity.com")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:git://github.com/Unity-Technologies/docfx-doclet.git")
+                    developerConnection.set("scm:git:ssh://github.com/Unity-Technologies/docfx-doclet.git")
+                    url.set("https://github.com/Unity-Technologies/docfx-doclet")
+                }
             }
         }
     }
