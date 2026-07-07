@@ -29,6 +29,7 @@ public abstract class BaseLookup<T extends Element> {
     protected final Map<ElementKind, String> elementKindLookup = new HashMap<>() {{
         put(ElementKind.PACKAGE, "Namespace");
         put(ElementKind.CLASS, "Class");
+        put(ElementKind.RECORD, "Class");
         put(ElementKind.ENUM, "Enum");
         put(ElementKind.ENUM_CONSTANT, "Field");
         put(ElementKind.INTERFACE, "Interface");
@@ -36,6 +37,7 @@ public abstract class BaseLookup<T extends Element> {
         put(ElementKind.CONSTRUCTOR, "Constructor");
         put(ElementKind.METHOD, "Method");
         put(ElementKind.FIELD, "Field");
+        put(ElementKind.RECORD_COMPONENT, "Field");
     }};
 
     protected Map<T, ExtendedMetadataFileItem> map = new HashMap<>();
