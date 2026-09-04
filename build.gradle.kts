@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.unity"
-version = "1.1.1"
+version = "1.3.0"
 
 java {
     withJavadocJar()
@@ -141,7 +141,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.unity"
             artifactId = "docfx-doclet"
-            version = "1.1.1"
+            version = "1.3.0"
 
             from(components["java"])
 

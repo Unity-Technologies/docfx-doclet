@@ -72,9 +72,10 @@ public class DocFxDoclet implements Doclet {
             // According to javadoc spec - these properties used by StandardDoclet and used only when
             // 'doclet' parameter not populated. But Gradle javadoc not align with this rule and
             // passes them in spite of 'doclet' parameter existence
-            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of doctitle property", "-doctitle"),
-            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of windowtitle property", "-windowtitle"),
-            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of notimestamp property", "-notimestamp")
+            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of doctitle property", "-doctitle", 1),
+            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of windowtitle property", "-windowtitle", 1),
+            // -notimestamp is a boolean flag: it takes no argument, so declaring 1 here would swallow the next token
+            new FakeOptionForCompatibilityWithStandardDoclet("Fake support of notimestamp property", "-notimestamp", 0)
         };
         return new HashSet<>(Arrays.asList(options));
     }
@@ -124,8 +125,16 @@ public class DocFxDoclet implements Doclet {
 
     static class FakeOptionForCompatibilityWithStandardDoclet extends CustomOption {
 
-        public FakeOptionForCompatibilityWithStandardDoclet(String description, String name) {
+        private final int argumentCount;
+
+        public FakeOptionForCompatibilityWithStandardDoclet(String description, String name, int argumentCount) {
             super(description, Collections.singletonList(name), "none");
+            this.argumentCount = argumentCount;
+        }
+
+        @Override
+        public int getArgumentCount() {
+            return argumentCount;
         }
 
         @Override
