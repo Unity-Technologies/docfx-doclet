@@ -54,12 +54,20 @@ public class DocFxDocletTest {
     @Test
     public void testFakeOptionCreation() {
         FakeOptionForCompatibilityWithStandardDoclet option =
-            new FakeOptionForCompatibilityWithStandardDoclet("Some description", "title");
+            new FakeOptionForCompatibilityWithStandardDoclet("Some description", "title", 1);
 
         assertThat("Wrong args count", option.getArgumentCount(), is(1));
         assertThat("Wrong description", option.getDescription(), is("Some description"));
         assertThat("Wrong kind", option.getKind(), is(Kind.STANDARD));
         assertThat("Wrong names", option.getNames(), is(Arrays.asList("title")));
         assertThat("Wrong params", option.getParameters(), is("none"));
+    }
+
+    @Test
+    public void testFakeOptionWithNoArguments() {
+        FakeOptionForCompatibilityWithStandardDoclet option =
+            new FakeOptionForCompatibilityWithStandardDoclet("Some description", "-notimestamp", 0);
+
+        assertThat("Wrong args count", option.getArgumentCount(), is(0));
     }
 }
